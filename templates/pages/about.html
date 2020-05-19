@@ -1,5 +1,56 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-<h1>About</h1>
-{% end block %}
+<div class="container-fluid p-0">
+    <div class="jumbotron jumbotron-about"> 
+        <div class="overlay mx-auto p-5 text-center">
+            <p class="display-4 jumbotron_shoutout">About Us</p>
+            <hr class="my-4">
+            <ul class="jumbotron_descriptions">
+            <li><i class="fas fa-check mx-2"></i>Fully qualified and professionals.</li>
+            <li><i class="fas fa-check mx-2"></i> Great passions in teaching.</li>
+            <li><i class="fas fa-check mx-2"></i>Aim to make baking easily learned skill for all ages.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row justify-content-center my-5 border-bottom">
+    <h2>Meet Our Team</h2>
+    </div>
+    <div class="row">  
+        <div class="col-md-6 text-center px-5">
+        <h4 class="chef-name">Ashleigh Brown</h4>
+        <img class="img-chef card-img-top img-fluid img-thumbnail rounded-circle" src="{% static 'img/ashleigh.jpg' %}" alt="Card image cap">
+        <p class="item-intro">Ashleigh is the <strong>Founder</strong> of this baking school. She was trained in well-knowned <em> Le Cordon Bleu London, UK.</em> She has passions for teaching and ambition of making baking an easy learned skills for everyone.</p>
+        </div>
+        <div class="col-md-6 text-center">
+        <h4 class="chef-name">Gordon Hines</h4>
+        <img class="img-chef card-img-top img-fluid img-thumbnail rounded-circle" src="{% static 'img/gordon.jpg' %}" alt="Card image cap">
+        <p class="item-intro">Gordon was trained in well-knowned <em> Le Cordon Bleu Paris, France.</em> He owned and ran a Patisserie shop in Paris for 5 years before returning home to Dublin to be with his parents.</p>
+        </div>
+    </div>
+</div>
+<div class="container mb-5">
+    <div class="row border-top mt-5 mb-3">
+        <div class="col-md-12 text-center p-5">
+            <h2 class="pt-4">Our Kitchen</h2>
+            <p class="item-intro">Our kitchen was originally a cottage which Ashleigh owned since 1996.  She has converted the cottage to a well-equipped studio kitchen for teaching. It can accommodate students up to group of ten.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-kitchen card-img-top img-thumbnail" src="{% static 'img/kitchen.jpg' %}" alt="Card image cap">
+        </div>
+        <div class="col-md-6 text-center mt-5">
+            <h4>Our Address:</h4>
+            <address>46, Bray Street, Dublin 2 </address>
+            <h4 class="mt-4">Public Transport</h4>
+            <p>Bus No.48 and 145</p>
+            <p> Tram GREEN line - Dawson Street Stop</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
