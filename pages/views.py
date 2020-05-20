@@ -10,4 +10,5 @@ def about(request):
 def contact(request):
     return render(request,'pages/contact.html')
 
-    
+def courses(request):
+    return render(request,'pages/courses.html')
