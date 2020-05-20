@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid p-0">
+    <div class="jumbotron jumbotron-contact"> 
+        <div class="overlay mx-auto p-5 text-center">
+            <p class="display-4 jumbotron_shoutout">Contact Us</p>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row text-center d-flex">
+        <div class="col-md-6 border contact_left">
+            <h4><i class="fas fa-envelope-open-text mx-2"></i>Postal Address </h4>
+            <address>Ashleigh Baking School,<br> 46, Bray Street,<br> Dublin 2,<br> Republic of Ireland </address>
+            <h4><i class="fas fa-at mx-2"></i>Email Address </h4>
+            <p class="font-italic">ashleighbakingschool@gmail.com</p>
+            <h4><i class="fas fa-phone-volume mx-2"></i>Telephone Number</h4>
+            <p>+353 151 667 667</p>
+            <p>+353 83 121 1212</p>
+        </div>
+        <div class="col-md-6 border pt-5 contact_right">
+            <h4>Any Queries?</h4>
+            <p>We welcome any queries. <br>Write, email, phone us or simply fill in the inquiry form.<br> We will get back to you as soon as possible.</p>
+        
+            <button id="make_inquiry" type="button" class="btn" data-toggle="modal" data-target="#inquiry_button" data-whatever="@mdo">Make An Inquiry</button>
+        </div>
+        <div class="modal fade" id="inquiry_button" tabindex="-1" role="dialog" aria-labelledby="inquiryLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="inquiryLabel">Make An Inquiry</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Your Name:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-email" class="col-form-label">Email Address:</label>
+            <input type="text" class="form-control" id="recipient-email">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button id="send_message" type="button" class="btn">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+</div>
+{% endblock %}
