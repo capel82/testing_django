@@ -25,13 +25,14 @@ SECRET_KEY = 'xmw2=syb0e$ngc%4e9biyb=e4=%%_x%t^te88-*uoq-aehb&xu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['LOCALHOST']
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'pages.apps.PagesConfig',
+    'courses.apps.CoursesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -76,8 +77,15 @@ WSGI_APPLICATION = 'baking_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME':'bsdb',
+        'USER':'bakinguser',
+        'PASSWORD': 'coding2009',
+        'HOST': 'localhost',
+        'PORT':'',
+        'OPTIONS': {
+            'read_default_file': '/etc/mysql/my.cnf',
+        },
     }
 }
 
