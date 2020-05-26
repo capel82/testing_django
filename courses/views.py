@@ -1,7 +1,14 @@
 from django.shortcuts import render
+from .models import Course
+
 # Create your views here.
 def index(request):
-    return render(request, 'pages/allcourses.html')
+    courses = Course.objects.all()
+
+    content = {
+        'courses' : courses
+    }
+    return render(request, 'pages/allcourses.html', content)
 
 def pastry(request):
     return render(request,'pages/pastry.html')
