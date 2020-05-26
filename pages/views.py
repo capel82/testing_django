@@ -7,9 +7,6 @@ def index(request):
 def about(request):
     return render(request, 'pages/about.html')
 
-def courses(request):
-    return render(request,'pages/courses.html')
-
 def contact(request):
     return render(request,'pages/contact.html')
 

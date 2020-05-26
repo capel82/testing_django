@@ -2,16 +2,16 @@ from django.shortcuts import render
 from .models import Course
 
 # Create your views here.
-def index(request):
+def courses(request):
     courses = Course.objects.all()
 
     content = {
         'courses' : courses
     }
-    return render(request, 'pages/allcourses.html', content)
+    return render(request, 'pages/courses.html', content)
 
-def pastry(request):
-    return render(request,'pages/pastry.html')
+def course(request, course_id):
+    return render(request,'pages/course.html')
 
 def cakes(request):
     return render(request,'pages/cakes.html')

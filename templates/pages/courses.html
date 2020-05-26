@@ -6,7 +6,7 @@
 <div class="container-fluid p-0">
     <div class="jumbotron jumbotron-courses"> 
         <div class="overlay mx-auto p-5 text-center">
-            <p class="display-4 jumbotron_shoutout">Courses</p>
+            <p class="display-4 jumbotron_shoutout">All Courses</p>
             <hr class="my-4">
             <ul class="jumbotron_descriptions">
             <li><i class="fas fa-check mx-2"></i>Short evenings and weekends courses</li>
@@ -36,36 +36,38 @@
         </div>
     </div>
 </div>
+
 <div class="container">
     <div class="row text-center mt-5">
         <div class="col-md-12">
             <h2>Baking courses</h2>
         </div>
-    <div class="row mb-5">
-        <div class="col-md-4">
-            <div class="card index-card">
-                    <img class="img-index card-img-top img-thumbnail" src="{% static 'img/eclairs.jpg' %}" alt="Card image cap">
-                <div class="card-body cardbody1 text-center">
-                    <a href="pastry.html" class="card-link">Pastries</a>
+    <div class="row my-5">
+        {% if courses %}
+            {% for course in courses %}
+            <div class="col-md-4 mb-3">
+            <div class="card" style="width: 22rem;">
+                <img class="card-img-top" src="{{course.photo_course.url}}"  alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-header">{{course.title}}</h5>
+                </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Weekdays <br> {{course.weekday_datetime}}</li>
+                        <li class="list-group-item">Weekends <br> {{course.weekends_datetime}}</li>
+                    </ul>
+                <div class="card-body">
+                    <a class="btn btn-info" href="{% url 'course' course.id %}" role="button">More Info</a>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card index-card">
-                    <img class="img-index card-img-top img-thumbnail" src="{% static 'img/rainbowcake.jpg' %}" alt="Card image cap">
-                <div class="card-body cardbody2 text-center">
-                    <a href="cakes.html" class="card-link">Cakes</a>
-                </div>
-            </div>
+            {% endfor %}
+        {% else %}
+        <div class="col-md-12">
+            <h4>There no courses available </h4>
         </div>
-        <div class="col-md-4">
-            <div class="card index-card">
-                    <img class="img-index card-img-top img-thumbnail" src="{% static 'img/ryebread.jpg' %}" alt="Card image cap">
-                <div class="card-body cardbody3 text-center">
-                    <a href="breads.html" class="card-link">Bread</a>
-                </div>
-            </div>
-        </div>
+        {% endif %}
+        
+        
     </div>
     </div>
 </div>
