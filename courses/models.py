@@ -10,13 +10,11 @@ class Course(models.Model):
     completion_list1 = models.CharField(max_length=250)
     completion_list2 = models.CharField(max_length=250, blank=True)
     category = models.CharField(max_length=50)
-    weekday_datetime = models.DateField()
-    weekends_datetime = models.DateField()
+    weekday_datetime = models.DateTimeField()
+    weekends_datetime = models.DateTimeField()
     photo_course = models.ImageField(upload_to='photos/%Y/%m/%d/')
     is_next_event = models.BooleanField(default=False)
     is_published = models.BooleanField(default=True)
     price = models.IntegerField()
-
-def _str_(self):
-    return self.title
-    
+    def __str__(self):
+        return self.title
