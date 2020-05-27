@@ -47,7 +47,7 @@
         {% if courses %}
             {% for course in courses %}
             <div class="col-md-4 mb-3">
-            <div class="card" style="width: 22rem;">
+            <div class="card text-center" style="width: 22rem;">
                 <img class="card-img-top" src="{{course.photo_course.url}}"  alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-header">{{course.title}}</h5>
@@ -68,8 +68,9 @@
         </div>
         {% endif %}
     </div>
-    <div class='row'>
-        <div class='col-md-12'>
+    <!--pagination-->
+    <div class= 'row my-4'>
+        <div class = 'col-md-12 d-flex justify-content-center'>
             {% if courses.has_other_pages %}
             <ul class= "pagination">
                 {% if courses.has_previous %}
@@ -84,7 +85,7 @@
                 {% for i in courses.paginator.page_range %}
                     {% if courses.number == i %}
                         <li class="page-item active">
-                            <a class="page-link">{{i}}</a>
+                            <a class="page-link bg-info" id="active_paginator_link">{{i}}</a>
                         </li>
                     {% else %}
                         <li class="page-item">

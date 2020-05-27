@@ -5,7 +5,7 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 def courses(request):
     courses = Course.objects.all()
-
+    #pagination for all course
     paginator = Paginator (courses, 3)
     page = request.GET.get('page')
 
