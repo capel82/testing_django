@@ -4,7 +4,7 @@ from courses.models import Course
 
 def index(request):
     #published course that is the next event
-    courses = Course.objects.order_by('weekday_datetime').filter(is_published=True, is_next_event=True)
+    courses = Course.objects.all().filter(is_published=True, is_next_event=True)
 
     content = {
         'courses' : courses

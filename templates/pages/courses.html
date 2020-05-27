@@ -53,8 +53,8 @@
                     <h5 class="card-header">{{course.title}}</h5>
                 </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Weekdays <br> {{course.weekday_datetime}}</li>
-                        <li class="list-group-item">Weekends <br> {{course.weekends_datetime}}</li>
+                        <li class="list-group-item">Weekdays <br> {{course.weekday_datetime|date:"d F yy h:i a"}}</li>
+                        <li class="list-group-item">Weekends <br> {{course.weekends_datetime|date:"d F yy h:i a"}}</li>
                     </ul>
                 <div class="card-body">
                     <a class="btn btn-info" href="{% url 'course' course.id %}" role="button">More Info</a>

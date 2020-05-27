@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Course
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
@@ -17,7 +17,13 @@ def courses(request):
     return render(request, 'pages/courses.html', content)
 
 def course(request, course_id):
-    return render(request,'pages/course.html')
+
+    course = get_object_or_404(Course, pk=course_id)
+
+    content = {
+        'course' : course
+    }
+    return render(request, 'pages/course.html', content)
 
 def cakes(request):
     return render(request,'pages/cakes.html')

@@ -1,2 +1,90 @@
-<h1>Course Pastry</h1>
-<p>Pastry</p>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container pt-5">
+    <div class="row my-5">
+        <div class="col-md-12 text-center">
+            <h1>Upcoming Courses</h1>
+            <hr class="my-4">
+        </div>
+    </div>
+    <div class="row filter_checkbox text-center">
+        <div class="col-md-12">
+            <p>Filter Courses by:</p>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="checkbox_all" value="option1">
+                <label class="form-check-label" for="checkbox_all">ALL</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="checkbox1" value="option1">
+                <label class="form-check-label" for="checkbox1">Pastries</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="checkbox2" value="option2">
+                <label class="form-check-label" for="checkbox2">Cakes</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="checkbox3" value="option2">
+                <label class="form-check-label" for="checkbox3">Bread</label>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row border border-info p-4 mb-5 courses_rows">
+        <div class="col-md-4 d-flex justify-content-center">
+            <img class="img-courses img-fluid" alt="Responsive image" src= "{{course.photo_course.url}}">
+        </div>
+        <div class="col-md-8">
+            <div class="row course_title">
+                <div class="col-md-12 d-flex justify-content-center">
+                <p class=" pt-2 single_title">{{course.title}}</p>
+                </div>
+            </div>
+
+            <div class="row courses_descriptions">
+                <div class=" col-sm-6 col-md-4 col-lg-6">
+                    <ul class="courses_lists">
+                        <h5>What you will learn:</h5>
+                        <li><i class="fas fa-mitten mx-2"></i>{{course.learn_list1}}</li>
+                        <li><i class="fas fa-mitten mx-2"></i>{{course.learn_list2}}</li>
+                        <li><i class="fas fa-mitten mx-2"></i>{{course.learn_list3}}</li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-6">
+                    <ul class="courses_lists">
+                        <h5>What you will bring back:</h5>
+                        <li><i class="fas fa-check mx-2"></i>{{course.completion_list1}}.</li>
+                        <li><i class="fas fa-check mx-2"></i>{{course.completion_list2}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row courses_dates">
+            <div class="col-sm-4 col-md-6 weekdays_column">
+            <div class="row d-block text-center">
+                <h5 class="weekdays mb-3">Weekdays</h5>
+                <p><strong>{{course.weekday_datetime|date:"d F yy h:i a"}}</strong></p>
+                <p><strong>Euro {{course.price}}</strong></p>
+            </div>
+            <div class="row d-flex justify-content-center mb-2">
+                <a class="btn btn-light add_basket">Add to Basket</a>
+            </div>
+        </div>
+        <div class="col-sm-4 col-md-6  weekends_column">
+            <div class="row d-block text-center">
+                <h5 class="weekends mb-3">Weekends</h5>
+                <p><strong>{{course.weekends_datetime|date:"d F yy h:i a"}}</strong></p>
+                <p><strong>Euro {{course.price}}</strong></p>
+                </div>
+            <div class="row d-flex justify-content-center">
+                <a class="btn btn-light add_basket">Add to Basket</a>
+            </div>
+        </div>
+            </div>
+        </div><!--col-md-8 div-->
+    </div><!--2nd row div-->
+</div><!--container div-->
+
+{% endblock %}

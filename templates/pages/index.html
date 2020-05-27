@@ -21,7 +21,8 @@
         {% if courses %}
             {% for course in courses %}
                 <h3>{{course.title}}</h3>
-                <h4 class="pb-4">Weekday {{course.weekday_datetime}} Weekends {{course.weekends_datetime}} </h4>
+                <h4>Weekday {{course.weekday_datetime|date:"d F yy h:i a"}}</h4>
+                <h4 class="pb-4"> Weekends {{course.weekends_datetime|date:"d F yy h:i a"}} </h4>
             {% endfor %}
         {% else %}
         <div class="col-md-12 pb-3">
