@@ -1,12 +1,18 @@
 from django.shortcuts import render
 from .models import Course
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
-# Create your views here.
+
 def courses(request):
     courses = Course.objects.all()
 
+    paginator = Paginator (courses, 3)
+    page = request.GET.get('page')
+
+    paged_courses = paginator.get_page(page)
+
     content = {
-        'courses' : courses
+        'courses' : paged_courses
     }
     return render(request, 'pages/courses.html', content)
 
