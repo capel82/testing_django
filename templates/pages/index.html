@@ -18,8 +18,17 @@
 <div id="news" class="container-fluid bg-light">
     <div class=" col-md-12 text-center">
         <h2 class="pt-4">Next Baking Course </h2>
-        <h4 class="pb-4">24 June 2020 Beginner Wednesday 7.00pm-9.30pm </h4>
-    </div>
+        {% if courses %}
+            {% for course in courses %}
+                <h3>{{course.title}}</h3>
+                <h4 class="pb-4">Weekday {{course.weekday_datetime}} Weekends {{course.weekends_datetime}} </h4>
+            {% endfor %}
+        {% else %}
+        <div class="col-md-12 pb-3">
+            <h4>There no courses available </h4>
+        </div>
+        {% endif %}
+        </div>
 </div>
 
 <div id="browse" class="container">

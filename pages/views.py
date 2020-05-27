@@ -1,8 +1,15 @@
 from django.shortcuts import render
+from courses.models import Course
 # Create your views here.
 
 def index(request):
-    return render(request, 'pages/index.html')
+    #published course that is the next event
+    courses = Course.objects.order_by('weekday_datetime').filter(is_published=True, is_next_event=True)
+
+    content = {
+        'courses' : courses
+    }
+    return render(request, 'pages/index.html', content)
 
 def about(request):
     return render(request, 'pages/about.html')

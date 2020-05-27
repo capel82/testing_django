@@ -2,11 +2,11 @@ from django.shortcuts import render
 from .models import Course
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
-
+#courses displayed by date of weekday and filter to only courses that are published.
 def courses(request):
-    courses = Course.objects.all()
+    courses = Course.objects.order_by('weekday_datetime').filter(is_published=True)
     #pagination for all course
-    paginator = Paginator (courses, 3)
+    paginator = Paginator (courses, 6)
     page = request.GET.get('page')
 
     paged_courses = paginator.get_page(page)
