@@ -1,1 +1,102 @@
-<h1>filter is all good</h1>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid p-0">
+    <div class="jumbotron jumbotron-search"> 
+        <div class="overlay mx-auto p-5 text-center">
+            <p class="display-4 jumbotron_shoutout">Your Search</p>
+            <hr class="my-4">
+        </div>
+    </div>
+</div>
+<div class="container-fluid p-5">
+    <div class="row text-center">
+        <div class="col-md-12">
+            <p class="filter_headings">Filter Courses by:</p>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-md-12">
+            <div class="dropdown">
+                <button class="btn dropdown_button dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Categories
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+                    <a class="dropdown-item btn" href="{% url 'courses' %}">All</a>
+                    <a class="dropdown-item btn" href="{% url 'pastry' %}">Pastry</a>
+                    <a class="dropdown-item btn" href="{% url 'cakes' %}">Cakes</a>
+                    <a class="dropdown-item btn" href="{% url 'breads' %}">Breads</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row my-5">
+        {% if courses %}
+            {% for course in courses %}
+            <div class="col-md-4 mb-3">
+            <div class="card text-center" style="width: 22rem;">
+                <img class="card-img-top" src="{{course.photo_course.url}}"  alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-header">{{course.title}}</h5>
+                </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Weekdays <br> {{course.weekday_datetime|date:"d F yy h:i a"}}</li>
+                        <li class="list-group-item">Weekends <br> {{course.weekends_datetime|date:"d F yy h:i a"}}</li>
+                    </ul>
+                <div class="card-body">
+                    <a class="btn btn-info" href="{% url 'course' course.id %}" role="button">More Info</a>
+                </div>
+            </div>
+        </div>
+            {% endfor %}
+        {% else %}
+        <div class="col-md-12">
+            <h4>There no courses available </h4>
+        </div>
+        {% endif %}
+    </div>
+    <!--pagination: dissapear when courses less or equal to 6, next and previous arrow diasabled as required-->
+    <div class= 'row my-4'>
+        <div class = 'col-md-12 d-flex justify-content-center'>
+            {% if courses.has_other_pages %}
+            <ul class= "pagination">
+                {% if courses.has_previous %}
+                    <li class="page-item">
+                        <a href="?page={{courses.previous_page_number}}" class="page-link">&laquo;</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link">&laquo;</a>
+                    </li>
+                {% endif %}
+                {% for i in courses.paginator.page_range %}
+                    {% if courses.number == i %}
+                        <li class="page-item active">
+                            <a class="page-link bg-info" id="active_paginator_link">{{i}}</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                            <a href="?page={{i}}" class="page-link">{{i}}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if courses.has_next %}
+                    <li class="page-item">
+                        <a href="?page={{courses.next_page_number}}" class="page-link">&raquo;</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link">&raquo;</a>
+                    </li>
+                {% endif %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

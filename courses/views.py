@@ -25,11 +25,26 @@ def course(request, course_id):
     }
     return render(request, 'pages/course.html', content)
 
+def pastry(request):
+    query_category = Course.objects.order_by('weekday_datetime').filter(category__iexact ="pastry")
+
+    content = {
+        'courses': query_category
+    }
+    return render(request,'pages/filter.html', content)
+
 def cakes(request):
-    return render(request,'pages/cakes.html')
+    query_category = Course.objects.order_by('weekday_datetime').filter(category__iexact ="cakes")
+
+    content = {
+        'courses': query_category
+    }
+    return render(request,'pages/filter.html', content)
 
 def breads(request):
-    return render(request,'pages/breads.html')
+    query_category = Course.objects.order_by('weekday_datetime').filter(category__iexact ="breads")
 
-def filter(request):
-    return render(request,'pages/filter.html')
+    content = {
+        'courses': query_category
+    }
+    return render(request,'pages/filter.html', content)
