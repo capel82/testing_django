@@ -11,17 +11,10 @@
     </div>
     <div class="row text-center">
         <div class="col-md-12 pb-5">
-            <div class="dropdown">
-                <button class="btn dropdown_button dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Categories
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenu">
-                    <a class="dropdown-item btn" href="{% url 'courses' %}">All</a>
-                    <a class="dropdown-item btn" href="{% url 'pastry' %}">Pastry</a>
-                    <a class="dropdown-item btn" href="{% url 'cakes' %}">Cakes</a>
-                    <a class="dropdown-item btn" href="{% url 'breads' %}">Breads</a>
-                </div>
-            </div>
+            <a href="{% url 'courses' %}" class="btn btn-secondary btn-lg filter_button" role="button" aria-disabled="true">All</a>
+            <a href="{% url 'pastry' %}" class="btn btn-secondary btn-lg filter_button" role="button" aria-disabled="true">Pastry</a>
+            <a href="{% url 'cakes' %}" class="btn btn-secondary btn-lg filter_button" role="button" aria-disabled="true">Cakes</a>
+            <a href="{% url 'breads' %}" class="btn btn-secondary btn-lg filter_button" role="button" aria-disabled="true">Breads</a>
         </div>
     </div>
     <div class="row p-5 mb-5 courses_rows">
