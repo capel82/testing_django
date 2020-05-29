@@ -17,22 +17,32 @@
       </li>
 
       <li 
-      {% if 'courses' in request.path %}
-         class="nav-item active"
+        {% if 'courses' in request.path %}
+            class="nav-item active"
         {% else %}
-         class= "nav-item"
-        {% endif %}>
+            class= "nav-item"
+        {% endif %} >
         <a class="nav-link" href="{% url 'courses' %}">Courses</a>
       </li>
       
       <li class="nav-item">
         <a class="nav-link" href="giftvouchers.html">Gift Vouchers</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="register.html">Register</a>
+      <li 
+        {% if 'register' in request.path %}
+            class="nav-item active"
+        {% else %}
+            class= "nav-item"
+        {% endif %} >
+        <a class="nav-link" href="{% url 'register' %}">Register</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="login.html">Login</a>
+      <li 
+        {% if 'login' in request.path %}
+            class="nav-item active"
+        {% else %}
+            class= "nav-item"
+        {% endif %} >
+        <a class="nav-link" href="{% url 'login' %}">Login</a>
       </li>
     </ul>
   </div>

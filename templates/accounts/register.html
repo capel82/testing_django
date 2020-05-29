@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid p-0">
+    <div class="jumbotron jumbotron-accounts"> 
+        <div class="overlay mx-auto p-5 text-center">
+            <p class="display-4 jumbotron_shoutout">Register</p>
+        </div>
+    </div>
+</div>
+
+<div class= "container">
+    <div class= "row d-flex justify-content-center my-3">
+        <div class= "col-md-6">
+        <!--Alert Messages-->
+        {% if messages %}
+            {% for message in messages %}
+            <div id="message" class="container">
+                <div class="alert alert-{{ message.tags }} alert-dismissable text-center" role="alert">
+                    <button type ="button" class="close" data-dismiss="alert"><span arial-hidden="true">&times;</span>
+                    </button>
+                    <strong>
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                            ERROR
+                        {% else %}
+                            {{message.tags|title}}
+                        {% endif %}
+                    </strong>
+                    {{message}}
+                </div>
+            </div>
+            {% endfor %}
+        {% endif %}
+
+        <h4>Register</h4>
+        <form action="{% url 'register' %}" method="POST">
+            {%  csrf_token %}
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Username</label>
+                <input type="username" class="form-control" id="InputUsername" aria-describedby="usernameHelp">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password">
+                <small id="passwordhelp" class="form-text text-muted">Maximum 6 alphabets or characters.</small>
+            </div>
+            <div class="form-group">
+                <label for="ConfirmedPassword">Confirmed Password</label>
+                <input type="password" class="form-control" id="ConfirmedPassword">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+            <div class="border-top mt-3 pt-2">
+                <small class="text-muted">Already has an Account? <a class="ml-2" href="login.html">Login</a></small>
+            </div>
+        </form>
+        </div><!--end col div-->
+        
+    </div><!--end row div-->
+</div><!--end container div-->
+
+{% endblock %}
